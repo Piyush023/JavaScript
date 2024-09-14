@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <button>Click Me</button>
+  </body>
+  <script>
+    class React {
+      constructor() {
+        this.library = 'library';
+        this.server = 'https://localhost:3000';
+
+        document
+          .querySelector('button')
+          .addEventListener('click', this.handleClick.bind(this)); // This Bind will attach all the variables and Methods to the function that is called with the bind - after this handleClick will have all the access to the methods and variables of the constructor of the React class.
+      }
+      handleClick() {
+        console.log('Handle Click Log');
+        console.log(this.server);
+      }
+    }
+
+    const r1 = new React();
+  </script>
+</html>
