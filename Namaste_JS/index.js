@@ -51,6 +51,15 @@
 
 // Closures - 
 
+Uses of Closures:
+- Module Design Patter
+- Currying
+- Functions like once
+- memoize
+- maintaining state in async world
+- setTimeouts
+- Iterators
+
 // function x(){
 //     var a = 10;
 //     function y(){
