@@ -39,7 +39,7 @@ const join = (a, b, c) => {
 }
 
 const joinWithNArgs = (...args) => {
-    console.log('Hello', args)
+    // console.log('Hello', args)
     let sum = 0;
     args.forEach((item) => {
         sum += item
@@ -50,18 +50,21 @@ const joinWithNArgs = (...args) => {
 const curriedJoin = curryWithLimitedArgs(join);
 // const curriedNArgsJoin = curryNArgsJoin(joinWithNArgs);
 
-console.log(curriedJoin(1)(2)(3))
-console.log(curriedJoin(1, 2, 3, 4, 5, 6, 7, 8, 9)) // Types of currying Calls
-// console.log(curriedNArgsJoin(1)(2)(3)(4)(5)(6)(7)(8)(9)()) // Need to call the last one with empty args in order to call the else case in Recursion - This will not work for the N Number of args. Check the below one - 
+// console.log(curriedJoin(1)(2)(3))
+// console.log(curriedJoin(1, 2, 3, 4, 5, 6, 7, 8, 9)) // Types of currying Calls
+// **- This will not work for the N Number of args. Check the below one - **
+// console.log(curriedNArgsJoin(1)(2)(3)(4)(5)(6)(7)(8)(9)()) // Need to call the last one with empty args in order to call the else case in Recursion 
 
-// Info - This function is for currying of the any num of args - 
+
+// ** Info - This function is for currying of the any num of args - This will work for the N Number of args. - **
+
 function curryWithAnyNumArgs(fn) {
     // The curried function, which initially doesn't have any arguments.
     return function curried(...args) {
-        console.log(args.length)
+        // console.log(args.length)
         // If no arguments are passed, return the current result.
         if (args.length === 0) {
-            console.log('If 0')
+            // console.log('If 0')
             return fn(); // This is just a safeguard in case someone calls curried() directly with no args.
         }
 
@@ -71,7 +74,7 @@ function curryWithAnyNumArgs(fn) {
 
             // If there are no new arguments, execute the function.
             if (args2.length === 0) {
-                console.log('if args0')
+                // console.log('if args0')
                 return fn.apply(this, newArgs);
             }
 
@@ -90,5 +93,5 @@ const updatedJoinWithAnyNumArgs = (...args) => {
 const curriedJoinWithAnyNumArgs = curryWithAnyNumArgs(updatedJoinWithAnyNumArgs);
 
 // Example usage
-console.log(curriedJoinWithAnyNumArgs(1)(2)(3)(4)(5)(6)(7)(8)(9)()); // Output: 45
+// console.log(curriedJoinWithAnyNumArgs(1)(2)(3)(4)(5)(6)(7)(8)(9)()); // Output: 45
 console.log(curriedJoinWithAnyNumArgs(1, 2)(3)(4, 5)(6, 7, 8, 9)()); // Output: 45
