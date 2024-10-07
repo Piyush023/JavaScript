@@ -24,6 +24,7 @@ createOrder(cart)
 // In this way we are not giving the control of the API to nay other service and also this give us the surety that it will call the API only when there is data from the previous call is there and it will only call the next API when the Promise from the last call is fulfilled and the API call will be done only once. The return will flow the data from one promise to the other.
 
 // How to Write a Promise - 
+/*
 const cart = ['Shoe', 'Pant', 'Shirt']
 
 const orderPromise = createOrder(cart)
@@ -72,5 +73,55 @@ function proceedToPayment(orderId) {
         resolve('Promise Payment Success')
     })
 }
+*/
 
 // All the Promise API - 
+
+
+
+const p1 = new Promise((resolve, reject) => {
+    setTimeout(() => resolve("P1 Success"), 3000)
+})
+
+
+const p2 = new Promise((resolve, reject) => {
+    // setTimeout(() => resolve("P2 Success"), 1000)
+    setTimeout(() => reject("P2 Rejected"), 1000)
+})
+
+const p3 = new Promise((resolve, reject) => {
+    setTimeout(() => resolve("P3 Success"), 2000)
+})
+
+// Promise.All() - 
+
+// This will give the output only after the all the Promise are Resolved and if one of them is rejected it will give the response as soon as the Promise is rejected and the response will be 
+Promise.all([p1, p2, p3]).then((res) => {
+    console.log("The Promise.all Result - ", res)
+}).catch((err) => {
+    console.error(err, 'Promise.all Error')
+})
+
+// Promise.allSettled() - 
+// This will give the output only after the all the Promise are Resolved and if one of them is rejected it will give the response only after all the Promises are settled weather rejected or resolved and it will give the Response as a array of the values of the Response from the Promises
+Promise.allSettled([p1, p2, p3]).then((res) => {
+    console.log("The Promise.allSettled Result - ", res)
+}).catch((err) => {
+    console.error(err, 'Promise.allSettled Error')
+})
+
+// Promise.Race() - 
+// This will give the output only after any one of the Promise is settled and if one of them is settled it will give the response as soon as the Promise is weather rejected or resolved and it will give the Response as a normal value of the Response from the 1st settled Promise.
+Promise.race([p1, p2, p3]).then((res) => {
+    console.log("The Promise.Race Result - ", res)
+}).catch((err) => {
+    console.error(err, 'Promise.race Error')
+})
+
+// Promise.Any() - 
+// This will give the output only after any one of the Promise is Resolved and if one of them is Resolved it will give the response as soon as the Promise is weather only resolved and it will give the Response as a normal value of the Response from the 1st Resolved Promise.
+Promise.any([p1, p2, p3]).then((res) => {
+    console.log("The Promise.Any Result - ", res)
+}).catch((err) => {
+    console.error(err, 'Promise.Any Error')
+})
