@@ -75,9 +75,8 @@ function proceedToPayment(orderId) {
 }
 */
 
+/*
 // All the Promise API - 
-
-
 
 const p1 = new Promise((resolve, reject) => {
     setTimeout(() => resolve("P1 Success"), 3000)
@@ -125,3 +124,85 @@ Promise.any([p1, p2, p3]).then((res) => {
 }).catch((err) => {
     console.error(err, 'Promise.Any Error')
 })
+
+*/
+
+// Async Await - 
+
+/*
+// Async Example - 
+const p = new Promise((resolve, reject) => {
+    resolve("Async Promise Success")
+})
+
+async function getDataAsync() {
+    return p; // Now this will always return a promise.
+}
+
+const getPromiseData = getDataAsync();
+
+getPromiseData.then((res) => console.log(res))
+
+// This implementation is without the Async Await.
+const p1 = new Promise((resolve, reject) => {
+    resolve("Promise Success")
+})
+
+function getData() {
+    p1.then((res) => {
+        console.log(res)
+    })
+}
+
+getData()
+
+// This is with Async Await - 
+const p2 = new Promise((resolve, reject) => {
+    resolve("Async Await Promise Success")
+})
+
+const getDataAwait = async () => {
+    const val = await p2;
+    console.log(val)
+}
+
+getDataAwait()
+*/
+
+// Async Await Execution Flow - 
+const p1 = new Promise((resolve, reject) => {
+    setTimeout(() => { resolve("Promise1 Success") }, 10000)
+})
+
+const p2 = new Promise((resolve, reject) => {
+    setTimeout(() => { resolve("Promise2 Success") }, 5000)
+})
+
+const handlePromise = async () => {
+    console.log("Hello World")
+
+    const val1 = await p1 // Now this is after the Delay of 10000 - 10 sec
+    console.log("Just After Promise1")
+    console.log("Value of Promise 1 - ", val1)
+
+    const val2 = await p2 // Now this is after the Delay of 5000 - 5 sec
+    console.log("Just After Promise2")
+    console.log("Value of Promise 2 - ", val2)
+}
+
+handlePromise()
+
+
+// Real World - 
+
+const API_URL = 'https://api.github.com/users/piyush023'
+
+const getGithubData = async() => {
+    const data = await fetch(API_URL)
+
+    const res = await data.json()
+
+    console.log(res)
+}
+
+getGithubData()
