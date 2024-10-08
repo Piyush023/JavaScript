@@ -169,6 +169,7 @@ const getDataAwait = async () => {
 getDataAwait()
 */
 
+/*
 // Async Await Execution Flow - 
 const p1 = new Promise((resolve, reject) => {
     setTimeout(() => { resolve("Promise1 Success") }, 10000)
@@ -206,3 +207,69 @@ const getGithubData = async() => {
 }
 
 getGithubData()
+
+*/
+'use strict'
+// This Keyword -
+console.log(this) // This here will the value of the global object. - In Browser - it will be Window Object. and In Node - it will be Empty Object.
+
+// This inside a function - 
+
+// This behavior is becoz of the this substitution in js which is 
+// ** ONLY IN STRICT MODE ** If the value of this is undefined or null then the value of this will be updated with the value of global object.
+function x(){
+    console.log(this) // This here will be the value of the global object. Only if we use the STRICT MODE else it will be the value of undefined.
+}
+
+x();
+window.x()
+
+// This inside the Object Method - 
+const obj = {
+    a: 20,
+    x: function(){
+        console.log(this, 'Value of the Obj Object')
+    }
+}
+obj.x() // This will give the output of the Obj itself.
+
+// Value of this inside the Object (Call, Apply and Bind Method) - 
+// Example of Call Method - 
+const stud1 = {
+    name: "ABC",
+    printName:function(){
+        console.log(this.name)
+    }
+}
+
+stud1.printName() // Now cause the this inside the object reps the object itself so the this.name will give the value of the name.
+
+// Call - TO share the value of printName with a other function which does not have a printName function it can be done using the call Method.
+const stud2 = {
+    name: "XYZ",
+}
+
+stud1.printName.call(stud2) // This will print the value of the name from the stud2 object and will give the output of the XYZ
+
+// This inside the Arrow function - 
+const objArrow = {
+    a: 20,
+    xArrow: () => {
+        console.log(this) // Now this will give the value of the Global object and not the value of the objArrow object. becoz the arrow function reps the value of lexical scope of the function.
+    }
+}
+
+objArrow.xArrow()
+
+const objNestedArrow = {
+    a: 20,
+    xArrow: function () {
+        // Value of this refs here the lexical enclosing context.
+        const yArrow = () => {
+            console.log(this) // Now this will give the value of the Global object and not the value of the objArrow object. becoz the arrow function reps the value of lexical scope of the function.
+        };
+        yArrow();
+    }
+}
+
+objNestedArrow.xArrow()
