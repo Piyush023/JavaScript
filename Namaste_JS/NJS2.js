@@ -209,6 +209,8 @@ const getGithubData = async() => {
 getGithubData()
 
 */
+
+/*
 'use strict'
 // This Keyword -
 console.log(this) // This here will the value of the global object. - In Browser - it will be Window Object. and In Node - it will be Empty Object.
@@ -273,3 +275,5 @@ const objNestedArrow = {
 }
 
 objNestedArrow.xArrow()
+
+*/
