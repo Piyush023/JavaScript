@@ -11,9 +11,9 @@ const res = arr.reduce((acc, curr) => {
 
 // Custom Implementation -
 // It will not return a new array but only a single value from the array.
-// We need 4 things - 1. Callback function, 2. acc, 3. curr, 4. initial value of the acc.
+// We need 4 things - 1. Callback function, 2. initial value of the acc.
 Array.prototype.myReduce = function (cb, iValue) {
-  acc = iValue === 0 || iValue ? iValue : this[0];
+  let acc = iValue === 0 || iValue ? iValue : this[0];
   for (let i = 0; i < this.length; i++) {
     acc = cb(acc, this[i]);
   }
