@@ -1,5 +1,4 @@
 // Add the unique Elements in to a array from these 2 arrays.
-/*
 const arr = [1, 2, 3, 4, 4];
 const arr2 = [2, 33, 43, 0, 4];
 
@@ -11,7 +10,6 @@ for (const i of resArr) {
 }
 
 console.log(resObj); // This will give the Object with all the unique elements in it.
-*/
 
 // function getWhereIsWishi() {
 //     fetch('https://api.wishlink.dev/whereiswishi')
