@@ -70,7 +70,6 @@ console.log(ThreeArgsCurrying(1)(2)(3));
 // Currying the join function
 const curriedJoin = curryWithLimitedArgs(join);
 console.log(curriedJoin(1)(2)(3));
-console.log(curriedJoin(1, 2, 3, 4, 5, 6, 7, 8, 9)); // Types of currying Calls
 
 // 3. N Number Args Currying -
 // Currying the join function

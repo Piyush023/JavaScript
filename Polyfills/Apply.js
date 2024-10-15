@@ -11,8 +11,8 @@ function printAge(age) {
 }
 
 // Inbuilt Working -
-// printAge.apply(person1, [20]); // If we pass args without the arrays then it will give a array that it is not iteratable, we need to pass it as a Array only.
-// printAge.apply(person2, [30]);
+printAge.apply(person1, [20]); // If we pass args without the arrays then it will give a array that it is not iteratable, we need to pass it as a Array only.
+printAge.apply(person2, [30]);
 
 // Custom Working -
 Function.prototype.myApply = function (obj, ...args) {
