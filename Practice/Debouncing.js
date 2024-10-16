@@ -43,3 +43,17 @@ const testObj = {
 
 const [{ marks: Mmarks }, { marks: Emarks }] = testObj.report;
 // console.log(Mmarks);
+
+// Debouncing -
+function debounce(cb, wait) {
+  let timer = null;
+  return function ex(...args) {
+    const context = this;
+    clearTimeout(timer);
+    timer = setTimeout(() => {
+      if (timer) {
+        cb.apply(context, args);
+      }
+    }, wait);
+  };
+}

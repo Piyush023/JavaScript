@@ -1,4 +1,4 @@
-function myAll(promises) {
+Promise.myAll = function (promises) {
   let counter = 0;
   let res = [];
   return new Promise((resolve, reject) => {
@@ -14,9 +14,9 @@ function myAll(promises) {
         .catch((err) => reject(err));
     });
   });
-}
+};
 
-function myAllSettle(promises) {
+Promise.myAllSettle = function (promises) {
   let counter = 0;
   let res = [];
   return new Promise((resolve) => {
@@ -35,9 +35,9 @@ function myAllSettle(promises) {
         });
     });
   });
-}
+};
 
-function myRace(promises) {
+Promise.myRace = function (promises) {
   return new Promise((resolve, reject) => {
     promises.forEach((item) => {
       item
@@ -49,9 +49,9 @@ function myRace(promises) {
         });
     });
   });
-}
+};
 
-function myAny(promises) {
+Promise.myAny = function (promises) {
   return new Promise((resolve, reject) => {
     promises.forEach((item) => {
       item
@@ -61,7 +61,7 @@ function myAny(promises) {
         .catch((err) => {});
     });
   });
-}
+};
 
 const p1 = new Promise((resolve, reject) => {
   setTimeout(() => {
