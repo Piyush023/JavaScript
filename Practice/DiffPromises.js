@@ -76,7 +76,7 @@ const p2 = new Promise((resolve, reject) => {
   }, 50);
 });
 
-myAll([p1, p2])
+Promise.myAll([p1, p2])
   .then((res) => {
     console.log('Promise.All Resolve', res);
   })
@@ -84,7 +84,7 @@ myAll([p1, p2])
     console.log('Promise.All Reject', err);
   });
 
-myAllSettle([p1, p2])
+Promise.myAllSettle([p1, p2])
   .then((res) => {
     console.log('Promise.AllSettled Resolve', res);
   })
@@ -92,7 +92,7 @@ myAllSettle([p1, p2])
     console.log('Promise.AllSettled Reject', err);
   });
 
-myRace([p1, p2])
+Promise.myRace([p1, p2])
   .then((res) => {
     console.log('Promise.Race Resolve', res);
   })
@@ -100,7 +100,7 @@ myRace([p1, p2])
     console.log('Promise.Race Reject', err);
   });
 
-myAny([p1, p2])
+Promise.myAny([p1, p2])
   .then((res) => {
     console.log('Promise.Any Resolve', res);
   })
